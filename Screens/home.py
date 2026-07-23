@@ -15,13 +15,13 @@ class HomeScreen:
         self.quitButton = Button(self.screen, 710, 830, 500, 150, self.quitImage)
 
     def buttonPress(self):
-        if self.startButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()) == True:
+        if self.startButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()):
             return 'LevelsScreen'
 
-        if self.optionButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()) == True:
+        if self.optionButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()):
                     return 'Options'
 
-        if self.quitButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()) == True:
+        if self.quitButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()):
                     return 'Quit'        
 
     
