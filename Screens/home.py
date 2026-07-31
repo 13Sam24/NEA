@@ -3,13 +3,15 @@ import pygame
 from ui.Button import Button
 
 class HomeScreen:
-    def __init__(self, screen, startImage, optionImage, quitImage):
+    def __init__(self, screen, background, startImage, optionImage, quitImage):
         self.screen = screen
+        self.background = pygame.image.load(background).convert_alpha()
         self.startImage = startImage
         self.optionImage = optionImage
         self.quitImage = quitImage
 
     def show(self):
+        self.screen.blit(self.background, (0, 0))
         self.startButton = Button(self.screen, 710, 440, 500, 150, self.startImage)
         self.optionButton = Button(self.screen, 710, 635, 500, 150, self.optionImage)
         self.quitButton = Button(self.screen, 710, 830, 500, 150, self.quitImage)

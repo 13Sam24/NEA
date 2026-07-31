@@ -14,8 +14,8 @@ WHITE = (255, 255, 255)
 screen.fill(WHITE)
 
 # Initialising the screens as objects
-homeScreen = HomeScreen(screen, 'Assets/HomeScreen/Start.png', 'Assets/HomeScreen/OptionsButton.png', 'Assets/HomeScreen/Quit.png')
-levelsScreen = LevelsScreen(screen, 'Assets/LevelsScreen/Background.png', 'Assets/LevelsScreen/Level1.png', 'Assets/LevelsScreen/Level2.png', 'Assets/LevelsScreen/Level3.png', 'Assets/LevelsScreen/Level4.png')
+homeScreen = HomeScreen(screen, 'Assets/HomeScreen/Background.png', 'Assets/HomeScreen/Start.png', 'Assets/HomeScreen/OptionsButton.png', 'Assets/HomeScreen/Quit.png')
+levelsScreen = LevelsScreen(screen, 'Assets/LevelsScreen/Background.png', 'Assets/LevelsScreen/Back.png', 'Assets/LevelsScreen/Level1.png', 'Assets/LevelsScreen/Level2.png', 'Assets/LevelsScreen/Level3.png', 'Assets/LevelsScreen/Level4.png')
 
 # Setting the start screen to be the home screen
 currentScreen = 'HomeScreen'
@@ -43,6 +43,9 @@ while running:
 	if currentScreen == 'LevelsScreen':
 		levelsScreen.show()
 		pageSelect = levelsScreen.buttonPress()
+		
+		if pageSelect == 'HomeScreen':
+			currentScreen = 'HomeScreen'
 			
 
 	pygame.display.flip()
