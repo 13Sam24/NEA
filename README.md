@@ -1,12 +1,10 @@
-# NEA
+# NEA (Currently Work In Progress)
 
 This is my A Level computer science NEA.
 
 It is being stored on github to make it easier to access and save and to be able to move thorugh the history of it if I need to.
 
 for this project I will be making an infinite 2d platformer that is procedurally generated. It is coded fully in python using the pygame community edition for the GUI and random for managing the randomness. 
-
-## Currently work in progress
 
 ## To Do List:
 * Fix home screen (when press play then go back none of the buttons work)
