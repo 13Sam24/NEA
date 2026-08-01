@@ -26,4 +26,10 @@ class HomeScreen:
         if self.quitButton.clicked(pygame.mouse.get_pos(), pygame.mouse.get_pressed()):
                     return 'Quit'        
 
-    
+
+
+
+
+
+
+    # !!! when you press the play button then go back to home screen none of the buttons work !!!

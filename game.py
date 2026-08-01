@@ -40,5 +40,7 @@ def game(screen, difficulty, seed):
 
         # on hardest difficulty it could be that sometiems the floor is missing
 
+        #Actually on second thoughts mayby i should make the blocks bigger as they are a bit small rn. Make them 60 x 60 rather than 30 x 30
+
 
         #self.screen.blit(self.background, (0, 0))
