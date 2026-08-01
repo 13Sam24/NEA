@@ -5,6 +5,7 @@ import pygame
 # from ui.Button import Button
 from Screens.home import HomeScreen
 from Screens.levels import LevelsScreen
+from game import game
 
 pygame.init()
 
@@ -46,6 +47,9 @@ while running:
 		
 		if pageSelect == 'HomeScreen':
 			currentScreen = 'HomeScreen'
+		if pageSelect == 'LevelOne':
+			currentScreen = 'GameLevel1'
+			game(screen, 'simple', 'null')
 			
 
 	pygame.display.flip()
