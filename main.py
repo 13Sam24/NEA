@@ -13,7 +13,6 @@ screen = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption('Platformer')
 WHITE = (255, 255, 255)
 screen.fill(WHITE)
-
 # Initialising the screens as objects
 homeScreen = HomeScreen(screen, 'Assets/HomeScreen/Background.png', 'Assets/HomeScreen/Start.png', 'Assets/HomeScreen/OptionsButton.png', 'Assets/HomeScreen/Quit.png')
 levelsScreen = LevelsScreen(screen, 'Assets/LevelsScreen/Background.png', 'Assets/LevelsScreen/Back.png', 'Assets/LevelsScreen/Level1.png', 'Assets/LevelsScreen/Level2.png', 'Assets/LevelsScreen/Level3.png', 'Assets/LevelsScreen/Level4.png')
