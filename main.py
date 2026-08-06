@@ -49,6 +49,10 @@ while running:
 		if pageSelect == 'LevelOne':
 			currentScreen = 'GameLevel1'
 			game(screen, 'simple', 'null')
+			keyPress = pygame.key.get_pressed()
+			if keyPress[pygame.K_q]:
+				print('k')
+				ame(screen, 'simple', 'null')
 			
 
 	pygame.display.flip()

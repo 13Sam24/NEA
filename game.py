@@ -26,7 +26,7 @@ def game(screen, difficulty, seed):
     random.seed((seed))
 
 
-# this code does not work
+    # this code does not work
     # x = 72
     # x = 32
     # y = 64
@@ -78,5 +78,6 @@ def game(screen, difficulty, seed):
             else:
                 nextToBlock = False
         chunk.append(Block(x, 1020, 'simple', screen))
+    return
 
         # on hardest difficulty it could be that sometiems the floor is missing
