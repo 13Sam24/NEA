@@ -29,15 +29,16 @@ while running:
 	# Shows the home screen
 	if currentScreen == 'HomeScreen':
 		homeScreen.show()
-		pageSelect = homeScreen.buttonPress()
+		#pageSelect = homeScreen.buttonPress()
 
-		if pageSelect == 'LevelsScreen':
-			currentScreen = 'LevelsScreen'
-		if pageSelect == 'Options':
-			currentScreen = 'Options'
-		if pageSelect == 'Quit':
-			currentScreen = 'Quit'
-			running = False
+	
+		match homeScreen.buttonPress():
+			case 'LevelsScreen':
+				currentScreen = 'LevelsScreen'
+			case 'Options':
+				currentScreen = 'Options'
+			case 'Quit':
+				running = False
 		
 	# Shows the levels screen
 	if currentScreen == 'LevelsScreen':
