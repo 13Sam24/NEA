@@ -1,6 +1,8 @@
 # Libraries being used
 import pygame
 
+slash = '\\'
+
 # Things imported from other .py files I made
 # from ui.Button import Button
 from Screens.home import HomeScreen
@@ -14,8 +16,8 @@ pygame.display.set_caption('Platformer')
 WHITE = (255, 255, 255)
 screen.fill(WHITE)
 # Initialising the screens as objects
-homeScreen = HomeScreen(screen, 'Assets/HomeScreen/Background.png', 'Assets/HomeScreen/Start.png', 'Assets/HomeScreen/OptionsButton.png', 'Assets/HomeScreen/Quit.png')
-levelsScreen = LevelsScreen(screen, 'Assets/LevelsScreen/Background.png', 'Assets/LevelsScreen/Back.png', 'Assets/LevelsScreen/Level1.png', 'Assets/LevelsScreen/Level2.png', 'Assets/LevelsScreen/Level3.png', 'Assets/LevelsScreen/Level4.png')
+homeScreen = HomeScreen(screen, f'Assets{slash}HomeScreen{slash}Background.png', f'Assets{slash}HomeScreen{slash}Start.png', f'Assets{slash}HomeScreen{slash}OptionsButton.png', f'Assets{slash}HomeScreen{slash}Quit.png')
+levelsScreen = LevelsScreen(screen, f'Assets{slash}LevelsScreen{slash}Background.png', f'Assets{slash}LevelsScreen{slash}Back.png', f'Assets{slash}LevelsScreen{slash}Level1.png', f'Assets{slash}LevelsScreen{slash}Level2.png', f'Assets{slash}LevelsScreen{slash}Level3.png', f'Assets{slash}LevelsScreen{slash}Level4.png')
 
 # Setting the start screen to be the home screen
 currentScreen = 'HomeScreen'
