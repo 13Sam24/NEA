@@ -1,16 +1,18 @@
 import random
 import pygame
-import time
 
+# Block object
 class Block:
-    def __init__(self, x, y, blockType, screen):
+    def __init__(self, x, y, blockType, screen): # The x and y are the location of the top left corner of the block
         self.location = (x, y)
         self.screen = screen
 
+        # This will allow for differnet types of blocks to be placed to make the game more visually apealing
         match blockType:
             case 'simple':
                 self.type = 'Assets/Blocks/SimpleBlock.png'
-
+                
+        # Placing the block image in the set location
         self.block = pygame.image.load(self.type).convert_alpha()
         self.screen.blit(self.block, self.location)
 
@@ -23,24 +25,7 @@ def game(screen, difficulty, seed):
     
     if seed == 'null':
         seed = random.randint(0, 100000000)
-    random.seed((seed))
-
-
-    # this code does not work
-    # x = 72
-    # x = 32
-    # y = 64
-    # y = 18
-    # for i in range(x):
-        # for j in range(y):
-            # num = random.randint(0, 1)
-            # if num == 1:
-                # chunk.append(Block(i * y, j * x, difficulty, screen))
-
-
-
-
-
+    random.seed((int(seed)))
 
     ## Attempt 2 THis works
     # each block is 60 x 60
@@ -77,7 +62,9 @@ def game(screen, difficulty, seed):
                 nextToBlock = True
             else:
                 nextToBlock = False
+    for x in range(0, 1920, 60):
         chunk.append(Block(x, 1020, 'simple', screen))
+
     return
 
         # on hardest difficulty it could be that sometiems the floor is missing
