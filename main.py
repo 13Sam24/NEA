@@ -7,8 +7,7 @@ slash = '\\'
 # Things imported from other .py files I made
 from Screens.home import HomeScreen
 from Screens.levels import LevelsScreen
-from game import game
-
+from game import Chunk
 pygame.init()
 
 # Makes and manages the screen in pygame
@@ -21,6 +20,7 @@ levelsScreen = LevelsScreen(screen, f'Assets{slash}LevelsScreen{slash}Background
 
 # Setting the start screen to be the home screen
 currentScreen = 'HomeScreen'
+gameStart = True
 
 # This is what keeps the game running
 running = True
@@ -54,11 +54,17 @@ while running:
 				currentScreen = 'GameLevel1'
 
 	if currentScreen == 'GameLevel1':
-		game(screen, 'simple', 'null')
+		
+		# This is making the game object
+		while gameStart:
+			Game = Chunk(screen, 1, 'null')
+			Game.seedGenerate()
+			Game.start()
+			gameStart = False
+
 		keyPress = pygame.key.get_pressed()
-		if keyPress[pygame.K_q]:
-			print('k')
-			game(screen, 'simple', 'null')
+		if keyPress[pygame.K_d]:
+			Game.makeChunk()
 			
 
 	pygame.display.flip()
