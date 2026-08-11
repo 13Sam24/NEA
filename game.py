@@ -82,10 +82,10 @@ class Chunk:
         background = pygame.image.load('Assets/Blocks/Background.png').convert_alpha()
         self.screen.blit(background, (0, 0))
         for i in range(len(self.chunklist)):
-            newChunk = self.chunklist[i].moveBlock(num)
-            if newChunk and makingNewChunk == False:
-                for j in range(self.chunkSizeList[0]):
-                    del self.chunklist[j]
-                print(len(self.chunklist))
-                self.makeChunk()
-                makingNewChunk = True
+            newChunk = self.chunklist[i].moveBlock(num) # This moves all the chunks over one
+        if newChunk and makingNewChunk == False:
+            for j in range(0, self.chunkSizeList[0]):
+                del self.chunklist[0]
+            del self.chunkSizeList[0]
+            self.makeChunk()
+            makingNewChunk = True
