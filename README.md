@@ -7,10 +7,13 @@ It is being stored on github to make it easier to access and save and to be able
 for this project I will be making an infinite 2d platformer that is procedurally generated. It is coded fully in python using the pygame community edition for the GUI and random for managing the randomness. 
 
 ## To Do List:
-* Make the blocks bigger (60 x 60 rather than 30 X 30)
 * Play around with the random numbers and statistically how likely something is to happen to make it feel better
-* Make the floor perminant and not also randomly generating
 * Check if it is possible for player to travers the generated world (Use if loops to make sure that platforms are not placed out of reach)
 * Stitch multiple chunks together.
 * Add controlls so you can scroll through the world
 * Check to make sure that the RAM is not getting to full (hopefully this is being looked after automatically)
+
+# Write:
+* making game a class
+* the whole class game
+* all if game starts then do this once

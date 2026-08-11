@@ -1,5 +1,6 @@
 # Libraries being used
 import pygame
+import time
 
 slash = '\\'
 #slash = '/'
@@ -60,12 +61,14 @@ while running:
 			Game = Chunk(screen, 1, 'null')
 			Game.seedGenerate()
 			Game.start()
+			Game.makeChunk()
 			gameStart = False
 
 		keyPress = pygame.key.get_pressed()
 		if keyPress[pygame.K_d]:
-			Game.makeChunk()
-			
+			Game.move(5)
+		if keyPress[pygame.K_a]:
+			Game.move(-5)
 
 	pygame.display.flip()
 
