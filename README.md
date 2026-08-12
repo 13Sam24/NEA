@@ -9,11 +9,4 @@ for this project I will be making an infinite 2d platformer that is procedurally
 ## To Do List:
 * Play around with the random numbers and statistically how likely something is to happen to make it feel better
 * Check if it is possible for player to travers the generated world (Use if loops to make sure that platforms are not placed out of reach)
-* Stitch multiple chunks together.
-* Add controlls so you can scroll through the world
 * Check to make sure that the RAM is not getting to full (hopefully this is being looked after automatically)
-
-# Write:
-* making game a class
-* the whole class game
-* all if game starts then do this once
