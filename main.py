@@ -1,6 +1,5 @@
 # Libraries being used
 import pygame
-import time
 
 slash = '\\'
 #slash = '/'
@@ -56,16 +55,15 @@ while running:
 
 	if currentScreen == 'GameLevel1':
 		
-		# This is making the game object
-		while gameStart:
+		while gameStart: # This means that It will only run this code once at the begining of the game
 			Game = Chunk(screen, 1, 'null')
-			Game.seedGenerate()
-			Game.start()
+			Game.seedGenerate() # Generates the seed
+			Game.start() # Makes the starting platform
 			Game.makeChunk()
-			gameStart = False
+			gameStart = False # Stops this part of the code repeating
 
-		keyPress = pygame.key.get_pressed()
-		if keyPress[pygame.K_d]:
+		keyPress = pygame.key.get_pressed() # Collects if a key is pressed
+		if keyPress[pygame.K_d]: # If d is pressed move right 5
 			Game.move(5)
 		if keyPress[pygame.K_a]:
 			Game.move(-5)

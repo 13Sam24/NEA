@@ -10,7 +10,6 @@ class Block:
             self.lastBlock = True
         else:
             self.lastBlock = False
-    
 
         # This will allow for differnet types of blocks to be placed to make the game more visually apealing
         match blockType:
@@ -21,11 +20,11 @@ class Block:
         self.block = pygame.image.load(self.type).convert_alpha()
         self.screen.blit(self.block, self.location)
 
-    def moveBlock(self, num):
+    def moveBlock(self, num): # This will place a new block in the new loaction. Make sure to re place background as last image will otherwise stay
         self.location = (self.location[0] - num, self.location[1])
         self.block = pygame.image.load(self.type).convert_alpha()
         self.screen.blit(self.block, self.location)
-        if self.lastBlock and self.location[0] == 1860:
+        if self.lastBlock and self.location[0] == 1860: # This is needed as if it is the last block in the chunk and it is nearly on the screen a new chunk needs to be made
             return True
         else:
             return False
@@ -37,16 +36,16 @@ class Chunk:
         self.screen = screen
         self.difficutly = difficutly
         self.seed = seed
+        self.background = pygame.image.load('Assets/Blocks/Background.png').convert_alpha()
         self.chunklist = []
         self.chunkSizeList = []
+
     def seedGenerate(self):
         if self.seed == 'null':
-            self.seed = int(random.randint(0, 1000000))
-        return self.seed
+            self.seed = random.randint(0, 1000000)
 
     def start(self):
-        background = pygame.image.load('Assets/Blocks/Background.png').convert_alpha()
-        self.screen.blit(background, (0, 0))
+        self.screen.blit(self.background, (0, 0))
         chunkSize = 0
         for x in range(0, 1920, 60):
             self.chunklist.append(Block(x, 1020, 'simple', self.screen))
@@ -55,8 +54,7 @@ class Chunk:
 
 
     def makeChunk(self):
-        background = pygame.image.load('Assets/Blocks/Background.png').convert_alpha()
-        self.screen.blit(background, (0, 0))
+        self.screen.blit(self.background, (0, 0))
         nextToBlock = False
         chunkSize = 0
         for y in range(0, 1020, 60):
@@ -79,8 +77,7 @@ class Chunk:
 
     def move(self, num):
         makingNewChunk = False
-        background = pygame.image.load('Assets/Blocks/Background.png').convert_alpha()
-        self.screen.blit(background, (0, 0))
+        self.screen.blit(self.background, (0, 0))
         for i in range(len(self.chunklist)):
             newChunk = self.chunklist[i].moveBlock(num) # This moves all the chunks over one
         if newChunk and makingNewChunk == False:
