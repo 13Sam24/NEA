@@ -32,6 +32,9 @@ class Block:
         else:
             return False
 
+    def update(self):
+        self.block = pygame.image.load(self.type).convert_alpha()
+        self.screen.blit(self.block, self.location)
 
 
 class Chunk:
@@ -88,3 +91,4 @@ class Chunk:
             del self.chunkSizeList[0]
             self.makeChunk()
             makingNewChunk = True
+        

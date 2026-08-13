@@ -8,6 +8,7 @@ slash = '\\'
 from Screens.home import HomeScreen
 from Screens.levels import LevelsScreen
 from game import Chunk
+from Entities.player import Player
 pygame.init()
 
 # Makes and manages the screen in pygame
@@ -60,13 +61,20 @@ while running:
 			Game.seedGenerate() # Generates the seed
 			Game.start() # Makes the starting platform
 			Game.makeChunk()
+			# Makes the player object and places it
+			player = Player(screen, 60, 960)
+
 			gameStart = False # Stops this part of the code repeating
 
 		keyPress = pygame.key.get_pressed() # Collects if a key is pressed
 		if keyPress[pygame.K_d]: # If d is pressed move right 5
-			Game.move(5)
+			Game.move(7)
+			player.move(4)
 		if keyPress[pygame.K_a]:
-			Game.move(-5)
+			Game.move(0)
+			player.move(-10)
+		if keyPress[pygame.K_w]:
+			player.jump()
 
 	pygame.display.flip()
 
