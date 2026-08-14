@@ -24,7 +24,6 @@ class Block:
 
     def moveBlock(self, num): # This will place a new block in the new loaction. Make sure to re place background as last image will otherwise stay
         self.location = (self.location[0] - num, self.location[1])
-        self.block = pygame.image.load(self.type).convert_alpha()
         self.screen.blit(self.block, self.location)
         if self.lastBlock and self.location[0] == 1860: # This is needed as if it is the last block in the chunk and it is nearly on the screen a new chunk needs to be made
             ##### IMPORTANT THE == 1860 means that the chunk needs to move an amount that 1860 divides ncely by like 5 and 10
@@ -33,7 +32,6 @@ class Block:
             return False
 
     def update(self):
-        self.block = pygame.image.load(self.type).convert_alpha()
         self.screen.blit(self.block, self.location)
 
 

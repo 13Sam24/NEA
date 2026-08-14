@@ -8,12 +8,16 @@ slash = '\\'
 from Screens.home import HomeScreen
 from Screens.levels import LevelsScreen
 from game import Chunk
-from Entities.player import Player
+from Entities.Player.player import Player
+from Entities.Player.movement import moveForwards, moveBackwards, playerjump
 pygame.init()
 
 # Makes and manages the screen in pygame
 screen = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption('Platformer')
+
+FPS = pygame.time.Clock()
+FPS.tick(60)
 
 # Initialising the screens as objects
 homeScreen = HomeScreen(screen, f'Assets{slash}HomeScreen{slash}Background.png', f'Assets{slash}HomeScreen{slash}Start.png', f'Assets{slash}HomeScreen{slash}OptionsButton.png', f'Assets{slash}HomeScreen{slash}Quit.png')
@@ -61,20 +65,22 @@ while running:
 			Game.seedGenerate() # Generates the seed
 			Game.start() # Makes the starting platform
 			Game.makeChunk()
+			Game.move(0)
 			# Makes the player object and places it
-			player = Player(screen, 60, 960)
+			Player = Player(screen, 60, 960)
 
 			gameStart = False # Stops this part of the code repeating
 
+		# movement
+		if Player.jumping:
+			playerjump(Player, Game)
 		keyPress = pygame.key.get_pressed() # Collects if a key is pressed
-		if keyPress[pygame.K_d]: # If d is pressed move right 5
-			Game.move(7)
-			player.move(4)
+		if keyPress[pygame.K_d]: # forwards
+			moveForwards(Player, Game)
 		if keyPress[pygame.K_a]:
-			Game.move(0)
-			player.move(-10)
-		if keyPress[pygame.K_w]:
-			player.jump()
+			moveBackwards(Player, Game)
+		if keyPress[pygame.K_w] and Player.jumping == False:
+			playerjump(Player, Game)
 
 	pygame.display.flip()
 
