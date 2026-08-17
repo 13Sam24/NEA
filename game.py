@@ -6,6 +6,7 @@ class Block:
     def __init__(self, x, y, blockType, screen): # The x and y are the location of the top left corner of the block
         self.location = (x, y)
         self.screen = screen
+        self.rect = pygame.Rect(self.location[0], self.location[1], 60, 60)
         if self.location[0] == 3780:
             self.lastBlock = True
         else:
@@ -25,12 +26,13 @@ class Block:
     def moveBlock(self, num): # This will place a new block in the new loaction. Make sure to re place background as last image will otherwise stay
         self.location = (self.location[0] - num, self.location[1])
         self.screen.blit(self.block, self.location)
+        self.rect = pygame.Rect(self.location[0], self.location[1], 60, 60)
         if self.lastBlock and self.location[0] == 1860: # This is needed as if it is the last block in the chunk and it is nearly on the screen a new chunk needs to be made
             ##### IMPORTANT THE == 1860 means that the chunk needs to move an amount that 1860 divides ncely by like 5 and 10
             return True
         else:
             return False
-
+        
     def update(self):
         self.screen.blit(self.block, self.location)
 
@@ -63,11 +65,11 @@ class Chunk:
         for y in range(0, 1020, 60): # Y coordinates for the blocks
             for x in range(1920, 3840, 60): # X coordinates for the blocks (it starts of screen)
                 if nextToBlock: # Higher chance of placing block if there is already one.
-                    num = random.randint(0, 1)
+                    num = random.randint(0, 10)
                 else:
                     num = random.randint(0, 5)
                 
-                if num == 1:
+                if num >= 5:
                     self.chunklist.append(Block(x, y, 'grass', self.screen)) # Places a block and adds it to the list
                     nextToBlock = True
                     chunkSize += 1
