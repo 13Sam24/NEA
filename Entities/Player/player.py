@@ -7,7 +7,7 @@ class Player:
         self.screen.blit(self.idleImage, self.location)
         self.jumping = False
         self.jumpingVelocity = 0
-        self.rect = pygame.Rect(self.location[0], self.location[1], 60, 60)
+        self.rect = pygame.Rect(self.location[0], self.location[1],59, 59)
 
 
     def move(self, speed):
@@ -21,18 +21,21 @@ class Player:
 
         self.screen.blit(self.idleImage, self.location)
         #self.rect = pygame.Rect((self.location[0], self.location[0] + 60), (self.location[1], self.location[1] + 60))
-        self.rect = pygame.Rect(self.location[0], self.location[1], 60, 60)
+        self.rect = pygame.Rect(self.location[0], self.location[1], 59, 59)
 
     def jump(self):
         self.location = (self.location[0], self.location[1] - self.jumpingVelocity)
         self.screen.blit(self.idleImage, self.location)
 
-    def checkCollision(self, blockList):
+    def fall(self):
+        self.location = (self.location[0], self.location[1] + 1)
+        self.screen.blit(self.idleImage, self.location)
+
+    def checkCollision(self, blockList, distanceX, distanceY):
         collide = False
+        self.rect = pygame.Rect(self.location[0] + distanceX, self.location[1] - distanceY, 59, 59)
         for i in range(len(blockList)):
             if self.rect.colliderect(blockList[i].rect):
-                print(f'Player {self.rect}')
-                print(f'Block {blockList[i].rect}')
                 collide = True
         return collide
 

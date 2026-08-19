@@ -12,9 +12,10 @@ for this project I will be making an infinite 2d platformer that is procedurally
 * Check to make sure that the RAM is not getting to full (hopefully this is being looked after automatically
 
 ## Write:
-* player making and movement
-* how i made in main.py but it go to big so i made it its own file
-* after a while I decided that it would b enicer if for the first while the world would not move so i changed that (better for users)
+* fixed the collision to check whether he would collidfe in the future rather than is he currently colliding
+* added gravaty
+* changed player movement speed to be half the speed
+* backwards collision
 
 ## Issue:
 sometimes the next chunk does not load.

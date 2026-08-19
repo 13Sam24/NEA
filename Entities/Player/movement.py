@@ -1,44 +1,47 @@
 def moveForwards(Player, Game):
-    if Player.checkCollision(Game.chunklist) == False:
-        if Player.location[0] >= 1800:
-            Game.move(10)
+    if Player.checkCollision(Game.chunklist, 2, 0) == False:
+        if Player.location[0] >= 1600:
+            Game.move(2)
             Player.move(0)
-        elif Player.location[0] < 1000:
-            Game.move(0)
-            Player.move(10)
         else:
-            Game.move(6)
-            Player.move(4)
-    else:
-        print('collision')
+            Game.move(0)
+            Player.move(2)
 
         
 
 def moveBackwards(Player, Game):
-    Game.move(0)
-    Player.move(-7)
+    if Player.checkCollision(Game.chunklist, -5, 0) == False:
+        Game.move(0)
+        Player.move(-5)
+
 
 def playerjump(Player, Game): # 15 starting and taking away 1 workds
     if Player.jumping == False:
         Player.jumping = True
-        Player.jumpingVelocity = 15
+        Player.jumpingVelocity = 16 # 15 works
 
+    # Going up
     if Player.jumpingVelocity >= 0 and Player.jumping:
-        if Player.checkCollision(Game.chunklist) == False:
+        if Player.checkCollision(Game.chunklist, 0, Player.jumpingVelocity) == False:
             Game.move(0)
             Player.jump()
             Player.jumpingVelocity -= 1
         else:
             Player.jumpingVelocity == 0
 
-
+    # Comming back down
     if Player.jumpingVelocity < 0 and Player.jumping and Player.jumpingVelocity >= -15:
-        if Player.checkCollision(Game.chunklist) == False:
-            Game.move(0)
-            Player.jump()
-            Player.jumpingVelocity -= 1
-        else:
-            Player.jumpingVelocity == -16
+            if Player.checkCollision(Game.chunklist, 0, Player.jumpingVelocity) == False:
+                Game.move(0)
+                Player.jump()
+                Player.jumpingVelocity -= 1
+            else:
+                Player.jumpingVelocity = -16
             
     if Player.jumpingVelocity == -16:
         Player.jumping = False
+
+def playerfall(Player, Game):
+    if Player.checkCollision(Game.chunklist, 0, -1) == False:
+        Game.move(0)
+        Player.fall()

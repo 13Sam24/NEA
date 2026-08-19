@@ -9,7 +9,7 @@ from Screens.home import HomeScreen
 from Screens.levels import LevelsScreen
 from game import Chunk
 from Entities.Player.player import Player
-from Entities.Player.movement import moveForwards, moveBackwards, playerjump
+from Entities.Player.movement import moveForwards, moveBackwards, playerjump, playerfall
 pygame.init()
 
 # Makes and manages the screen in pygame
@@ -81,6 +81,7 @@ while running:
 			moveBackwards(Player, Game)
 		if keyPress[pygame.K_w] and Player.jumping == False:
 			playerjump(Player, Game)
+		playerfall(Player, Game)
 
 	pygame.display.flip()
 
