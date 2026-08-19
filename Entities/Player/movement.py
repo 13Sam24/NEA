@@ -10,9 +10,9 @@ def moveForwards(Player, Game):
         
 
 def moveBackwards(Player, Game):
-    if Player.checkCollision(Game.chunklist, -5, 0) == False:
+    if Player.checkCollision(Game.chunklist, -1, 0) == False:
         Game.move(0)
-        Player.move(-5)
+        Player.move(-1)
 
 
 def playerjump(Player, Game): # 15 starting and taking away 1 workds

@@ -12,10 +12,7 @@ for this project I will be making an infinite 2d platformer that is procedurally
 * Check to make sure that the RAM is not getting to full (hopefully this is being looked after automatically
 
 ## Write:
-* fixed the collision to check whether he would collidfe in the future rather than is he currently colliding
-* added gravaty
-* changed player movement speed to be half the speed
-* backwards collision
+
 
 ## Issue:
 sometimes the next chunk does not load.
