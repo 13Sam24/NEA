@@ -82,6 +82,7 @@ while running:
 		if keyPress[pygame.K_w] and Player.jumping == False:
 			playerjump(Player, Game)
 		playerfall(Player, Game)
+		Player.displayHealth()
 
 	pygame.display.flip()
 

@@ -1,4 +1,9 @@
 import pygame
+
+pygame.font.init()
+fontName = pygame.font.get_default_font()
+font = pygame.font.Font(fontName, 30)
+
 class Player:
     def __init__(self, screen, locationX, locationY):
         self.screen = screen
@@ -8,6 +13,7 @@ class Player:
         self.jumping = False
         self.jumpingVelocity = 0
         self.rect = pygame.Rect(self.location[0], self.location[1],55, 55)
+        self.health = 100
 
 
     def move(self, speed):
@@ -41,3 +47,14 @@ class Player:
 
     def hold(self):
         print('hold ont object')
+
+    def displayHealth(self):
+        if self.health >= 50:
+            healthText = font.render(str(self.health), False, (0, 0, 0))
+            self.screen.blit(healthText, (10, 5))
+        elif self.health >= 15:
+            healthText = font.render(str(self.health), False, (255, 165, 0))
+            self.screen.blit(healthText, (10, 5))
+        else:
+            healthText = font.render(str(self.health), False, (255, 0, 0))
+            self.screen.blit(healthText, (10, 5))
