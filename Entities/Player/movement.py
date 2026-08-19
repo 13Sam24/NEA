@@ -25,16 +25,16 @@ def playerjump(Player, Game): # 15 starting and taking away 1 workds
         if Player.checkCollision(Game.chunklist, 0, Player.jumpingVelocity) == False:
             Game.move(0)
             Player.jump()
-            Player.jumpingVelocity -= 1
+            Player.jumpingVelocity -= 0.5
         else:
-            Player.jumpingVelocity == 0
+            Player.jumpingVelocity -= 1
 
     # Comming back down
     if Player.jumpingVelocity < 0 and Player.jumping and Player.jumpingVelocity >= -15:
             if Player.checkCollision(Game.chunklist, 0, Player.jumpingVelocity) == False:
                 Game.move(0)
                 Player.jump()
-                Player.jumpingVelocity -= 1
+                Player.jumpingVelocity -= 0.5
             else:
                 Player.jumpingVelocity = -16
             
@@ -42,6 +42,6 @@ def playerjump(Player, Game): # 15 starting and taking away 1 workds
         Player.jumping = False
 
 def playerfall(Player, Game):
-    if Player.checkCollision(Game.chunklist, 0, -1) == False:
+    if Player.checkCollision(Game.chunklist, 0, -5) == False:
         Game.move(0)
         Player.fall()

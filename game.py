@@ -1,5 +1,6 @@
 import random
 import pygame
+from Entities.Enemy.Enemy1 import Enemy1
 
 # Block object
 class Block:
@@ -45,6 +46,8 @@ class Chunk:
         self.background = pygame.image.load('Assets/Blocks/Background.png').convert_alpha()
         self.chunklist = []
         self.chunkSizeList = []
+        self.enemyList = []
+        self.enemySizeList = []
 
     def seedGenerate(self):
         if self.seed == 'null':
@@ -65,7 +68,7 @@ class Chunk:
         for y in range(0, 1020, 60): # Y coordinates for the blocks
             for x in range(1920, 3840, 60): # X coordinates for the blocks (it starts of screen)
                 if nextToBlock: # Higher chance of placing block if there is already one.
-                    num = random.randint(0, 10)
+                    num = random.randint(0, 20)
                 else:
                     num = random.randint(0, 5)
                 
@@ -80,15 +83,36 @@ class Chunk:
             chunkSize += 1
         self.chunkSizeList.append(chunkSize)
 
+
+        # Places enemeis
+        enemyNumber = 0
+        for i in range(chunkSize):
+            num = random.randint(0, 30)
+            if num == 1:
+                self.enemyList.append(Enemy1(self.screen, self.chunklist[i].location[0], self.chunklist[i].location[1] - 50))
+                enemyNumber += 1
+                for j in range(chunkSize):
+                    if self.chunklist[i].location[0] == self.chunklist[j].location[0] and self.chunklist[i].location[1] - 50 == self.chunklist[j].location[0]:
+                        self.chunklist[j].moveBlock(-1080)
+        self.enemySizeList.append(enemyNumber)
+
+
     def move(self, distance):
         makingNewChunk = False
         self.screen.blit(self.background, (0, 0))
         for i in range(len(self.chunklist)):
             newChunk = self.chunklist[i].moveBlock(distance) # This moves all the chunks over one
+
+        for i in range(len(self.enemyList)):
+            self.enemyList[i].move(distance) # Moves the enemy over
+
         if newChunk and makingNewChunk == False:
             for j in range(0, self.chunkSizeList[0]):
                 del self.chunklist[0]
             del self.chunkSizeList[0]
+            for j in range(0, self.enemySizeList[0]):
+                del self.enemyList[0]
+            del self.enemySizeList[0]
             self.makeChunk()
             makingNewChunk = True
         
